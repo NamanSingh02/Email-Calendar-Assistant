@@ -1,0 +1,10 @@
+import axios from "axios";
+const API = "http://localhost:8000";
+export const startAuth = () => axios.get(`${API}/auth/google/start`).then(r => r.data);
+export const loadCalendar = () => axios.get(`${API}/calendar/sample`).then(r => r.data);
+export const emailsInRange = (start, end) => axios.get(`${API}/emails/range`, { params: { start, end, max_results: 50 }}).then(r => r.data);
+export const summarizeEmail = (text) => axios.post(`${API}/summarize/email`, { text }).then(r => r.data);
+export const getSummary = (start, end) => axios.get(`${API}/summary`, { params: { start, end, max_results: 50 }}).then(r => r.data);
+export const extractActions = (text) => axios.post(`${API}/extract/actions`, { text }).then(r => r.data);
+export const authStatus = () => axios.get(`${API}/auth/status`).then(r => r.data);
+export const authLogout = () => axios.post(`${API}/auth/logout`).then(r => r.data);
